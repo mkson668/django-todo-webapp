@@ -17,9 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from todo.views import todoView
 from todo.views import addTodo
+from todo.views import deleteTodo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('todo/', todoView),
     path('addTodo/', addTodo),
+    # the syntax <int:todoID> allows for ints 1,2,3... after slash that integer will be called todoID
+    # this variable will be sent to the function deleteTodo in views.py
+    path('deleteTodo/<int:todoID>/', deleteTodo),
 ]

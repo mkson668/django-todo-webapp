@@ -1,11 +1,15 @@
-<h1> This is todo view </h1>
+<h1> Things to do </h1>
 
 
 <!--special type of django forloop-->
 
 <ul>
     {%for todoitem in allItems%}
-    <li>{{todoitem.content}}</li>
+    <li>{{todoitem.content}}
+        <form action="/deleteTodo/{{todoitem.id}}/" style="display: inline" method="POST"> {%csrf_token%}
+            <input type="submit" value="delete" />
+        </form>
+    </li>
     {%endfor%}
 </ul>
 
@@ -14,7 +18,7 @@
 
 <form action="/addTodo/" method="POST"> {%csrf_token%}
     <!--we are inputing some text, and we are calling the text content-->
-    <input type="text" name="content"/>
+    <input type="text" name="content" />
     <!--this is a submit button with the text add on it-->
-    <input type="submit" value="add"/> 
+    <input type="submit" value="add" />
 </form>

@@ -22,3 +22,7 @@ def addTodo(request):
     return HttpResponseRedirect('/todo/')
     #we have to now map this view to url.py
 
+def deleteTodo(request, todoID):
+    itemToDelete = TodoItem.objects.get(id = todoID)
+    itemToDelete.delete()
+    return HttpResponseRedirect('/todo/')
