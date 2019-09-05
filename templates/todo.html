@@ -8,3 +8,13 @@
     <li>{{todoitem.content}}</li>
     {%endfor%}
 </ul>
+
+<!--csrf_token is a for security measures for forms, POST because we are 
+    updating.posting to the database-->
+
+<form action="/addTodo/" method="POST"> {%csrf_token%}
+    <!--we are inputing some text, and we are calling the text content-->
+    <input type="text" name="content"/>
+    <!--this is a submit button with the text add on it-->
+    <input type="submit" value="add"/> 
+</form>
